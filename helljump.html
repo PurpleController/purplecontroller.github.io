@@ -397,6 +397,7 @@
         <p>A hellish platformer.</p>
         <div class="hero-buttons">
             <a href="#download" class="btn">Download Beta</a>
+            <a href="tryhelljump.html" class="btn">Try Hell Jump</a>
             <a href="#story" class="btn btn-outline">Learn More</a>
         </div>
     </div>
@@ -466,7 +467,8 @@
 
                 <!-- Android -->
                 <div class="download-card" tabindex="0">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#3DDC84" width="48" height="48">
+                    <!-- FIX: Removed hardcoded fill="#3DDC84" so icon inherits --primary yellow like all others -->
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.523 15.341a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5m-11.046 0a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5m11.405-7.20l1.539-2.665a.32.32 0 0 0-.117-.437.32.32 0 0 0-.437.117l-1.56 2.702A9.6 9.6 0 0 0 12 7.115a9.6 9.6 0 0 0-3.907.843L6.533 5.256a.32.32 0 0 0-.437-.117.32.32 0 0 0-.117.437l1.539 2.665C4.63 9.588 2.87 12.064 2.87 15h18.26c0-2.936-1.76-5.412-4.248-6.859"/>
                     </svg>
                     <h3>Android <span class="badge badge-beta">Beta</span></h3>
@@ -480,7 +482,7 @@
                     <svg viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg>
                     <h3>HTML5 <span class="badge badge-beta">Beta</span></h3>
                     <p>Hell Jump in a browser</p>
-                    <a href="play.html" class="btn" style="margin-right:6px;">Play on Site</a>
+                    <a href="tryhelljump.html" class="btn" style="margin-right:6px;">Play on Site</a>
                     <a href="https://gx.games/games/k43zu4/hell-jump-beta-web-edition/" target="_blank" class="btn btn-outline">GX Games</a>
                     <a href="https://gamejolt.com/games/helljump/1056911" target="_blank" class="btn btn-outline">Game Jolt</a>
                 </div>
@@ -512,8 +514,9 @@
                 </ul>
             </div>
 
+            <!-- FIX: Changed duplicate v0.2.1 label to v0.2.0 -->
             <div class="changelog-entry">
-                <h3>v0.2.1</h3>
+                <h3>v0.2.0</h3>
                 <div class="date">Beta · April 14, 2026</div>
                 <ul>
                     <li>Fixed Mobile Controls Showing On PC</li>
