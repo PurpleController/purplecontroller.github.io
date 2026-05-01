@@ -91,6 +91,109 @@
             opacity: 0.9;
         }
 
+        /* Hamburger menu */
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        #mobile-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 20px;
+
+            position: static;
+            background: transparent;
+            flex-direction: row;
+            padding: 0;
+
+            border-top: none;
+        }
+
+        #mobile-nav.active {
+            display: flex;
+        }
+
+        .nav-close {
+            display: none;
+            align-self: flex-end;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 8px 5%;
+            margin-right: 0;
+        }
+
+        /* Desktop tweaks: remove mobile-only paddings/borders */
+        #mobile-nav a {
+            padding: 0;
+            border-bottom: none;
+            display: inline-block;
+        }
+
+        #mobile-nav .social-icons {
+            padding: 0;
+            border-bottom: none;
+        }
+
+        #mobile-nav .social-icons a {
+            padding: 0;
+            border-bottom: none;
+        }
+
+        #mobile-nav a, #mobile-nav .social-icons {
+            color: white;
+            text-decoration: none;
+            padding: 12px 5%;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: block;
+        }
+
+        #mobile-nav .social-icons {
+            display: flex;
+            gap: 14px;
+            padding: 12px 5%;
+            border-bottom: none;
+        }
+
+        #mobile-nav .social-icons a {
+            padding: 0;
+            border-bottom: none;
+        }
+
+
         .hero {
             min-height: 100vh;
             padding: 120px 5%;
@@ -248,10 +351,42 @@
         /* ── MOBILE ── */
         @media (max-width: 640px) {
             header {
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
                 gap: 8px;
                 padding: 0.75rem 4%;
+                position: relative;
             }
+            .hamburger-btn {
+                display: flex;
+            }
+            nav {
+                display: none;
+            }
+
+            .nav-close {
+                display: block;
+            }
+
+            #mobile-nav {
+                display: none;
+                position: fixed;
+                top: 56px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                z-index: 100;
+                max-height: calc(100vh - 56px);
+                overflow-y: auto;
+
+                flex-direction: column;
+                background: var(--dark);
+            }
+
+            #mobile-nav.active {
+                display: flex;
+            }
+
             nav {
                 gap: 10px;
                 flex-wrap: wrap;
@@ -276,7 +411,13 @@
                 <strong>AramCZGames</strong>
             </a>
         </div>
-        <nav>
+        <button class="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="mobile-nav">
+            <button class="nav-close" onclick="toggleMobileMenu()" aria-label="Close menu">×</button>
             <a href="#games">Games</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
@@ -360,9 +501,21 @@
         </div>
     </section>
 
-   
+
 
     <script>
+        function toggleMobileMenu() {
+            const btn = document.querySelector('.hamburger-btn');
+            const nav = document.getElementById('mobile-nav');
+            btn.classList.toggle('active');
+            nav.classList.toggle('active');
+        }
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-nav a').forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+
         const form = document.getElementById('contact-form');
         const btn = document.getElementById('submit-btn');
         const status = document.getElementById('form-status');
