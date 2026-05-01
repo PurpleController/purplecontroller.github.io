@@ -11,7 +11,7 @@
       "identifier": "hell-jump-ios-release-v1",
       "caption": "Hell Jump Beta is now available for iOS! Enjoy.",
       "date": "2026-04-30",
-      "tintColor": "#ffda6b",
+      "tintColor": "#0055ff",
       "imageURL": "https://aramczgames.github.io/images/HellJumpIcon.png",
       "notify": true,
       "appID": "io.github.aramczgames.helljump"
@@ -27,16 +27,16 @@
       "localizedDescription": "Play as a simple cube trying to jump, dodge, and survive your way out. Expect precise controls, increasing difficulty, and a whole lot of rage-quits. Made with love in the Czech Republic. Coming in summer 2026.",
       "iconURL": "https://aramczgames.github.io/images/HellJumpIcon.png",
       "screenshots": [
-        "Screenshot1",
-        "Screenshot2",
-        "Screenshot3"
+        "IMG_0818.jpeg",
+        "IMG_0819.jpeg",
+        "IMG_0823.png"
       ],
       "tintColor": "#ffda6b",
       "versions": [
         {
           "version": "0.2.2",
           "date": "2026-04-15",
-          "downloadURL": "https://drive.google.com/uc?export=download&id=1Ra5CmAdbSWB7zSDtv6XqdrUbe1EyxrLY",
+          "downloadURL": "https://drive.google.com/uc?export=download&id=1l1Z0X1BXMagCcmcYnWRtNY1DW8UYIw3C",
           "size": 27400000,
           "localizedDescription": "Initial release of Hell Jump Beta on iOS."
         }
