@@ -33,9 +33,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
         }
 
         nav {
@@ -87,21 +84,111 @@
             align-items: center;
         }
 
+        .logo-link strong {
+            font-weight: 700;
+        }
+
         .logo-link:hover { opacity: 0.9; }
 
         /* Hamburger menu */
-        .hamburger-btn { display: none; background: none; border: none; color: white; cursor: pointer; width: 30px; height: 30px; padding: 0; flex-direction: column; justify-content: center; gap: 6px; }
-        .hamburger-btn span { display: block; width: 24px; height: 2px; background: white; transition: all 0.3s ease; }
-        .hamburger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
-        .hamburger-btn.active span:nth-child(2) { opacity: 0; }
-        .hamburger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
-        #mobile-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--dark); flex-direction: column; padding: 0; border-top: 1px solid rgba(255,255,255,0.1); }
-        #mobile-nav.active { display: flex; }
-        #mobile-nav a { color: white; text-decoration: none; padding: 12px 5%; border-bottom: 1px solid rgba(255,255,255,0.1); display: block; }
-        #mobile-nav .social-icons { display: flex; gap: 14px; padding: 12px 5%; border-bottom: none; }
-        #mobile-nav .social-icons a { padding: 0; border-bottom: none; }
-        .nav-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.3); }
-        .nav-close { align-self: flex-end; background: none; border: none; color: white; font-size: 28px; cursor: pointer; padding: 8px 5%; margin-right: 0; }
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        #mobile-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 20px;
+            position: static;
+            background: transparent;
+            flex-direction: row;
+            padding: 0;
+            border-top: none;
+        }
+
+        #mobile-nav.active {
+            display: flex;
+        }
+
+        .nav-close {
+            display: none;
+            align-self: flex-end;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 8px 5%;
+            margin-right: 0;
+        }
+
+        /* Desktop tweaks: remove mobile-only paddings/borders */
+        #mobile-nav a {
+            padding: 0;
+            border-bottom: none;
+            display: inline-block;
+        }
+
+        #mobile-nav .social-icons {
+            padding: 0;
+            border-bottom: none;
+        }
+
+        #mobile-nav .social-icons a {
+            padding: 0;
+            border-bottom: none;
+        }
+
+        #mobile-nav a, #mobile-nav .social-icons {
+            color: white;
+            text-decoration: none;
+            padding: 12px 5%;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: block;
+        }
+
+        #mobile-nav .social-icons {
+            display: flex;
+            gap: 14px;
+            padding: 12px 5%;
+            border-bottom: none;
+        }
+
+        #mobile-nav .social-icons a {
+            padding: 0;
+            border-bottom: none;
+        }
 
         /* ── HERO ── */
         .hero {
@@ -509,9 +596,48 @@
         }
 
         /* ── MOBILE ── */
+        /* ── MOBILE ── */
         @media (max-width: 640px) {
-            header { flex-wrap: wrap; gap: 8px; padding: 0.75rem 4%; }
-            nav { gap: 10px; flex-wrap: wrap; }
+            header {
+                flex-wrap: nowrap;
+                gap: 8px;
+                padding: 0.75rem 4%;
+                position: relative;
+            }
+            .hamburger-btn {
+                display: flex;
+            }
+            nav {
+                display: none;
+            }
+
+            .nav-close {
+                display: block;
+            }
+
+            #mobile-nav {
+                display: none;
+                position: fixed;
+                top: 56px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                z-index: 100;
+                max-height: calc(100vh - 56px);
+                overflow-y: auto;
+                flex-direction: column;
+                background: var(--dark);
+            }
+
+            #mobile-nav.active {
+                display: flex;
+            }
+
+            nav {
+                gap: 10px;
+                flex-wrap: wrap;
+            }
             nav > a { font-size: 0.85rem; }
             .nav-divider { display: none; }
             .social-icons { gap: 10px; }
@@ -534,7 +660,13 @@
                 <strong>AramCZGames</strong>
             </a>
         </div>
-        <nav>
+        <button class="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="mobile-nav">
+            <button class="nav-close" onclick="toggleMobileMenu()" aria-label="Close menu">×</button>
             <a href="#sidestore">SideStore</a>
             <a href="#livecontainer">LiveContainer</a>
             <a href="#trollstore">TrollStore</a>
@@ -843,8 +975,7 @@
                 <thead>
                     <tr>
                         <th>Method</th>
-                        <th>iOS 14–15</th>
-                        <th>iOS 16</th>
+                        <th>Reliability</th>
                         <th>iOS 17+</th>
                         <th>No PC</th>
                         <th>No Expiry</th>
@@ -853,16 +984,15 @@
                 <tbody>
                     <tr>
                         <td><strong style="color:var(--primary);">SideStore</strong></td>
-                        <td class="yes">✓</td>
-                        <td class="yes">✓</td>
+                        <td class="partial">Sometimes</td>
                         <td class="yes">✓</td>
                         <td class="partial">After setup</td>
                         <td class="no">✗ (7 days)</td>
                     </tr>
                     <tr>
                         <td><strong style="color:var(--primary);">LiveContainer</strong></td>
-                        <td class="yes">✓</td>
-                        <td class="yes">✓</td>
+
+                        <td class="partial">Sometimes</td>
                         <td class="yes">✓</td>
                         <td class="partial">After setup</td>
                         <td class="yes">✓</td>
@@ -870,14 +1000,12 @@
                     <tr>
                         <td><strong style="color:var(--primary);">TrollStore</strong></td>
                         <td class="yes">✓</td>
-                        <td class="partial">Some versions</td>
                         <td class="no">✗</td>
-                        <td class="yes">✓  (on some versions)</td>
+                        <td class="partial">On Some Versions</td>
                         <td class="yes">✓</td>
                     </tr>
                     <tr>
                         <td><strong style="color:var(--primary);">AltStore</strong></td>
-                        <td class="yes">✓</td>
                         <td class="yes">✓</td>
                         <td class="yes">✓</td>
                         <td class="no">✗</td>
@@ -898,6 +1026,18 @@
     </footer>
 
     <script>
+        function toggleMobileMenu() {
+            const btn = document.querySelector('.hamburger-btn');
+            const nav = document.getElementById('mobile-nav');
+            btn.classList.toggle('active');
+            nav.classList.toggle('active');
+        }
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-nav a').forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+
         function copyText(elementId, btn) {
             const text = document.getElementById(elementId).textContent;
             navigator.clipboard.writeText(text).then(() => {
