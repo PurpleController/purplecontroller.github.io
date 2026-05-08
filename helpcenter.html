@@ -388,7 +388,7 @@
     return isNaN(t) ? 0 : t;
   };
 
-  const DEV_NAMES = new Set(["AramCZ2"]);
+  const DEV_NAMES = new Set(["AramCZdev", "AramCZGames"]);
   const isDev = name => DEV_NAMES.has(name);
   const devBadge = name => isDev(name) ? `<span class="dev-badge">DEV</span>` : "";
   const getUsername = user => { if (!user) return "Unknown"; return user.displayName || "User"; };
