@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AramCZGames</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .nav-divider {
+            width: 1px;
+            height: 20px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .social-icons a {
+            color: white;
+            display: flex;
+            align-items: center;
+            opacity: 0.85;
+            transition: opacity 0.2s;
+        }
+
+        .social-icons a:hover {
+            opacity: 1;
+        }
+
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .logo-link {
+            text-decoration: none;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .logo-link strong {
+            font-weight: 700;
+        }
+
+        .logo-link:hover {
+            opacity: 0.9;
+        }
+
+        /* Hamburger menu */
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        #mobile-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 20px;
+
+            position: static;
+            background: transparent;
+            flex-direction: row;
+            padding: 0;
+
+            border-top: none;
+        }
+
+        #mobile-nav.active {
+            display: flex;
+        }
+
+        .nav-close {
+            display: none;
+            align-self: flex-end;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 8px 5%;
+            margin-right: 0;
+        }
+
+        /* Desktop tweaks: remove mobile-only paddings/borders */
+        #mobile-nav a {
+            padding: 0;
+            border-bottom: none;
+            display: inline-block;
+        }
+
+        #mobile-nav .social-icons {
+            padding: 0;
+            border-bottom: none;
+        }
+
+        #mobile-nav .social-icons a {
+            padding: 0;
+            border-bottom: none;
+        }
+
+        #mobile-nav a, #mobile-nav .social-icons {
+            color: white;
+            text-decoration: none;
+            padding: 12px 5%;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: block;
+        }
+
+        #mobile-nav .social-icons {
+            display: flex;
+            gap: 14px;
+            padding: 12px 5%;
+            border-bottom: none;
+        }
+
+        #mobile-nav .social-icons a {
+            padding: 0;
+            border-bottom: none;
+        }
+
+
+        .hero {
+            min-height: 100vh;
+            padding: 120px 5%;
+            text-align: center;
+            background: #4089ff;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin: 0;
+            letter-spacing: 0.05em;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 1rem auto 0;
+        }
+
+        .container {
+            padding: 50px 5%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .about-me {
+            background: #ffffff;
+            padding: 40px 5%;
+        }
+
+        .about-me .container {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .about-me p {
+            font-size: 1.15rem;
+            color: #334155;
+            margin-bottom: 15px;
+        }
+
+        .help-center {
+            background: #f8fafc;
+            padding: 40px 5%;
+        }
+
+        .help-center .container {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .contact-me {
+            background: #f8fafc;
+            padding: 40px 5%;
+        }
+
+        .contact-me .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-me form {
+            display: grid;
+            gap: 14px;
+            margin-top: 10px;
+        }
+
+        .contact-me label {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        .contact-me input,
+        .contact-me textarea {
+            margin-top: 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 10px;
+            font: inherit;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .contact-me .btn {
+            margin-top: 10px;
+            width: fit-content;
+        }
+
+        .container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            letter-spacing: 0.04em;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1.1fr));
+            gap: 8px;
+            margin-top: 30px;
+            justify-items: center;
+        }
+
+        .card {
+            text-align: center;
+            min-width: 420px;
+            width: 100%;
+            max-width: 520px;
+            background: white;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .card img.project-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #e2e8f0;
+            margin-top: 50px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+            border: none;
+            cursor: pointer;
+            font: inherit;
+            font-size: 1rem;
+        }
+
+        .form-status {
+            margin-top: 12px;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .form-status.success { color: #16a34a; }
+        .form-status.error   { color: #dc2626; }
+
+        /* ── MOBILE ── */
+        @media (max-width: 640px) {
+            header {
+                flex-wrap: nowrap;
+                gap: 8px;
+                padding: 0.75rem 4%;
+                position: relative;
+            }
+            .hamburger-btn {
+                display: flex;
+            }
+            nav {
+                display: none;
+            }
+
+            .nav-close {
+                display: block;
+            }
+
+            #mobile-nav {
+                display: none;
+                position: fixed;
+                top: 56px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                z-index: 100;
+                max-height: calc(100vh - 56px);
+                overflow-y: auto;
+
+                flex-direction: column;
+                background: var(--dark);
+            }
+
+            #mobile-nav.active {
+                display: flex;
+            }
+
+            nav {
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+            nav > a { font-size: 0.85rem; }
+            .nav-divider { display: none; }
+            .social-icons { gap: 10px; }
+            .hero { padding: 80px 4% 60px; width: 100%; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            h2 { font-size: 1.6rem; }
+            section { padding: 48px 4%; }
+        }
+    </style>
+</head>
+<body>
+    </header>
+
+    <section class="hero">
+        <h1>Privacy Policy</h1>
+    </section>
+
+<div class="container" id="privacy-policy">
+    <h2 style="text-align: left;">Privacy Policy for Hell Jump</h2>
+    <p><strong>Last Updated: May 2026</strong></p>
+
+    <div style="text-align: left; color: #334155;">
+        <h3>1. Data Collection</h3>
+        <p>Hell Jump does not collect, and never will collect, any personal information directly from our users during gameplay. The app itself is designed to be played without an account.</p>
+
+        <h3>2. Third-Party Services (Ads)</h3>
+        <p>We use <strong>Google AdMob</strong> to show advertisements. AdMob may collect and use certain data (such as your device’s Advertising ID) to show you personalized or non-personalized ads.</p>
+        <p>You can view Google's Privacy Policy here: <a href="https://policies.google.com/privacy" target="_blank" style="color: var(--primary);">https://policies.google.com/privacy</a></p>
+
+        <h3>3. Children's Privacy</h3>
+        <p>Our game is intended for a general audience. We do not knowingly collect personal data from children.</p>
+
+        <h3>4. Your Choices</h3>
+        <p>You can opt-out of personalized advertising through the in-game settings or your device's privacy settings.</p>
+
+        <h3>5. Contact & Support</h3>
+        <p>If you choose to use our <strong>Help Center</strong>, you may sign in using third-party services (Google or GitHub). In this case:</p>
+    <ul>
+        <li>We only access the basic profile information provided by the service (such as your email and name) to to manage posted issues.</li>
+        <li>We do not share this data with anyone else.</li>
+        <li>The Help Center is completely optional and not required to play the game.</li>
+    </ul>
+<p>You can also contact me directly via <a href="https://aramczgames.github.io#contact" style="color: var(--primary);">email</a>.</p>
+
+
+    <footer>
+        <p>&copy; 2026 AramCZGames. Licenced under GNU 3.0 licence.</p>
+    </footer>
+</body>
+</html>
