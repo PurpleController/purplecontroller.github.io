@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play Hell Jump — AramCZGames</title>
+    <title>Try Hell Jump</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <style>
@@ -205,35 +205,137 @@
 
         /* ── MOBILE ── */
         @media (max-width: 640px) {
-            header { flex-wrap: nowrap; gap: 12px; padding: 0.5rem 3%; position: relative; min-height: 64px; }
-            .hamburger-btn { display: flex; margin-left: auto; }
-            nav { display: none; }
+            /* Header */
+        header {
+            background: rgba(15, 23, 42, 0.94);
+            color: white;
+            padding: 0.4rem 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
 
-            .nav-close { display: block; }
+            min-height: 64px;
+            height: auto;
+            box-sizing: border-box;
+        }
 
-            #mobile-nav {
-                display: none;
-                position: fixed;
-                top: 64px;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                border-top: 1px solid rgba(255,255,255,0.1);
-                z-index: 100;
-                max-height: calc(100vh - 64px);
-                overflow-y: auto;
-                overflow-x: hidden;
-
-                flex-direction: column;
-                background: var(--dark);
-                padding: 0;
+            .hamburger-btn {
+                display: flex;
+                margin-left: auto;
+                width: 56px;
+                height: 56px;
+                padding: 8px;
+                flex-shrink: 0;
             }
-            #mobile-nav.active { display: flex; }
 
-            nav { gap: 10px; flex-wrap: wrap; }
-            nav > a { font-size: 0.85rem; }
+            .nav-close {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                margin: 6px 4% 4px auto;
+            }
+
+        #mobile-nav {
+            display: none;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+
+            height: auto;
+            max-height: 60vh;
+
+            overflow-y: auto;
+
+            flex-direction: column;
+            background: rgba(15, 23, 42, 0.98);
+            z-index: 999;
+
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+
+            transform: translateY(-8px);
+            opacity: 0;
+            pointer-events: none;
+
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        #mobile-nav.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+            #mobile-nav a {
+                border-radius: 0;
+                display: flex;
+                font-size: 0.95rem;
+                justify-content: space-between;
+                min-height: 56px;
+                padding: 14px 4%;
+                width: 100%;
+                box-sizing: border-box;
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
+
+            #mobile-nav a:hover,
+            #mobile-nav a:focus-visible,
+            #mobile-nav a[aria-current="page"] {
+                background: rgba(255,255,255,0.08);
+            }
+
+            #mobile-nav .social-icons {
+                gap: 10px;
+                padding: 14px 4% 0;
+            }
+
+            #mobile-nav .social-icons a {
+                border-radius: 8px;
+                min-height: 48px;
+                padding: 0;
+                width: 48px;
+            }
+
             .nav-divider { display: none; }
-            .social-icons { gap: 10px; }
+            
+            .hero {
+                padding: 40px 4% 30px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .hero h1 {
+                font-size: 1.5rem;
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
+            
+            #mobile-nav a {
+                font-size: 0.95rem;
+                min-height: 48px;
+                padding: 12px 5%;
+                box-sizing: border-box;
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
+            
+            h2 { font-size: 1.4rem; }
+            section { padding: 32px 4%; }
+            .download-grid { grid-template-columns: 1fr; }
+            .screenshots-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -273,7 +375,7 @@
         <div class="play-header">
             <img src="./images/HellJumpIcon.png" alt="Hell Jump icon">
             <h1>Hell Jump</h1>
-            <a href="helljump.html">← Back to game page</a>
+            <a href="https://aramczgames.github.io/helljump">← Back to game page</a>
         </div>
 
         <div class="game-frame-wrapper">
