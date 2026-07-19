@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="./images/HellJumpIcon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Play Hell Jump</title>
+
+    <style>
+        :root {
+            --primary: #ffda0b;
+            --primary-dark: #e6c400;
+            --dark: #1e293b;
+            --darker: #0f172a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+            background: var(--darker);
+            color: #e2e8f0;
+        }
+
+        /* HEADER */
+        header {
+            background: rgba(15, 23, 42, 0.94);
+            padding: 0.75rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+            backdrop-filter: blur(14px);
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 6px 10px 6px 6px;
+            border-radius: 8px;
+        }
+
+        .logo-link:hover,
+        .back-link:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .logo-link img {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 650;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 45vh;
+            padding: 70px 5%;
+            background: linear-gradient(160deg, #1a0000 0%, #3d0000 50%, #1e293b 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero img {
+            width: 100px;
+            height: 100px;
+            filter: drop-shadow(0 0 20px rgba(255,218,11,0.5));
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--primary);
+            margin: 20px 0 10px;
+            letter-spacing: 0.05em;
+        }
+
+        .hero p {
+            color: #cbd5e1;
+            font-size: 1.3rem;
+        }
+
+        /* GAME */
+        section {
+            padding: 70px 5%;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+        }
+
+        .game-box {
+            background: #2d2d44;
+            border: 1px solid #3d3d5c;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .game-frame {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: black;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .game-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .info {
+            color: #94a3b8;
+            margin-top: 15px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: var(--dark);
+            color: #64748b;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .fullscreen-btn {
+            background: var(--primary);
+            color: #1a0000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 15px;
+            display:block;
+            margin:0 auto 15px;
+        }
+
+        .fullscreen-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 35px 4%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <a href="https://purplecontroller.github.io" class="logo-link">
+        <img src="./images/Purple controller.png" alt="Purple Controller logo">
+        <strong>Purple Controller</strong>
+    </a>
+
+    <a href="https://purplecontroller.github.io/helljump" class="back-link">
+        ← Back
+    </a>
+</header>
+
+<div class="hero">
+    <img src="./images/HellJumpIcon.png" alt="Hell Jump icon">
+    <h1>Play Hell Jump</h1>
+    <p>A hellish platformer playable in your browser.</p>
+</div>
+
+<section>
+    <div class="container">
+        <h2>Hell Jump Web Edition</h2>
+
+        <div class="game-box">
+            <div class="game-frame" id="game-frame">
+                <iframe src="./Hell Jump Demo/index.html" id="game" title="Hell Jump Web Edition" allowfullscreen></iframe>
+            </div>
+
+            <p class="info">
+                Use a modern web browser (Brave or Firefox recommended). If you have issues, enable cross-origin isolation in your browser settings for the best experience, or try using a different browser or updating your current one.
+            </p>
+            <button class="fullscreen-btn" onclick="fullscreenGame()">
+                Fullscreen
+            </button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 <a href="https://purplecontroller.github.io">Purple Controller</a>
+</footer>
+    <script>
+    function fullscreenGame() {
+        const game = document.getElementById("game-frame");
+
+        if (game.requestFullscreen) {
+            game.requestFullscreen();
+        } else if (game.webkitRequestFullscreen) {
+            game.webkitRequestFullscreen();
+        } else if (game.msRequestFullscreen) {
+            game.msRequestFullscreen();
+        }
+    }
+    </script>
+</body>
+</html>
