@@ -19,6 +19,79 @@
     <category>Game Development</category>
 
     <item>
+      <title>Hell Jump Chapter 4 &amp; Update 2.0 Progress Update - October 2026</title>
+
+      <link>https://purplecontroller.github.io/helljump</link>
+
+      <description><![CDATA[
+        <p>
+          Heya! It's been almost a month, so things have happened.
+          If you follow the @HellJumpGame Twitter account, you may have noticed that activity has gone down.
+          That's because I started school. :(
+          Work hasn't been too bad, but development has slowed down a bit.
+        </p>
+
+        <p>
+          <strong>New and Shiny</strong><br>
+          Hell Jump will now have Discord Rich Presence!
+          When you're in a level and signed in to Discord, your Discord profile will show that you're playing Hell Jump.
+          You'll also be able to disable this feature in the settings.
+        </p>
+
+        <img
+          src="/rss/images/RPC.png"
+          alt="Discord Rich Presence">
+
+        <p>
+          Discord Rich Presence will also display which level you're currently playing.
+        </p>
+
+        <img
+          src="/rss/images/RPC2.png"
+          alt="Discord Rich Presence">
+
+        <p>
+          <strong>New and Smaller Shiny Things</strong><br>
+          - A master volume slider<br>
+          - Textboxes<br>
+          - Better Git history<br>
+          - And a few more things
+        </p>
+
+        <p>
+          <strong>You forgot about Middle Heaven!</strong><br>
+          Not much progress has been made on Middle Heaven this month.
+          I focused more on adding quality-of-life features instead of working on the new chapter.
+          However, some help with level design came from <a href="https://wolfyxon.github.io/">Wolfyxon</a>.
+        </p>
+
+        <p>
+          <strong>How will Middle Heaven be released?</strong><br>
+          Middle Heaven will be released as part of Update 2.0, completely free.
+        </p>
+
+        <p>
+          One last thing: I created a <a href="https://discord.gg/WfVxDRfMmA">Discord Server</a>!
+          It's not all about Hell Jump, but there is a channel dedicated to it.
+          If you want to check it out, click the "Discord Server" link above.
+        </p>
+
+        <p>
+          That's all for now. Čau.
+        </p>
+
+        <a href="https://aramcz.is-a.dev/">-AramCZ</a>
+      ]]></description>
+    </item>
+
+      <pubDate>Wed, 03 Oct 2026 00:00:00 GMT</pubDate>
+
+      <guid isPermaLink="true">
+        https://purplecontroller.github.io/rss/images/end.png
+      </guid>
+    </item>
+
+    <item>
       <title>Hell Jump Chapter 4 Progress Update - September 2026</title>
 
       <link>https://purplecontroller.github.io/helljump</link>
