@@ -1,2 +1,2 @@
 # aramczdev.github.io
-A redirect to my new site https://aramcz.is-a.dev
+A redirect to my our site https://purplecontroller.80hdnet.work
